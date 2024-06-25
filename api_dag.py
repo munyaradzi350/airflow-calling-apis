@@ -24,14 +24,14 @@ with DAG(
      # Define the HttpSensor task
      task_is_api_active = HttpSensor(
           task_id='is_api_active',
-          http_conn_id='api_post',  # Make sure this connection ID is defined in Airflow
+          http_conn_id='api_post',  
           endpoint='posts/'
      )
 
      # Define the SimpleHttpOperator task
      task_get_posts = SimpleHttpOperator(
           task_id='get_posts',
-          http_conn_id='api_post',  # Make sure this connection ID is defined in Airflow
+          http_conn_id='api_post',
           endpoint='posts/',
           method='GET',
           response_filter=lambda response: json.loads(response.text),
